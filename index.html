@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis: Inovasi Hijau untuk Masa Depan Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F1F8E9;
+            color: #333333;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .flow-arrow::after {
+            content: '→';
+            font-size: 2rem;
+            color: #FFC107;
+            margin: 0 1rem;
+            display: inline-block;
+            transform: translateY(4px);
+        }
+        .flow-item {
+             flex: 1;
+             min-width: 120px;
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #558B2F;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: none;
+            margin: 1rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#558B2F] mb-4">Inovasi Hijau Indonesia</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-700">Menjelajahi Potensi Alam, Menjawab Tantangan Urban, dan Merintis Masa Depan Pertanian Berkelanjutan.</p>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="geography-climate">
+                <h2 class="text-3xl font-bold text-center mb-2 text-[#558B2F]">Fondasi Alam: Geografi & Iklim Tropis</h2>
+                <p class="text-center max-w-2xl mx-auto mb-8 text-gray-600">Kekayaan Indonesia berawal dari kondisi geografis dan iklimnya yang unik, yang memberikan potensi besar sekaligus tantangan yang harus diatasi.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
+                    <div class="card p-6 text-center lg:col-span-1">
+                        <h3 class="text-xl font-semibold mb-4 text-[#795548]">Negara Kepulauan Terbesar</h3>
+                         <div class="chart-container" style="height: 250px;">
+                            <canvas id="landWaterChart"></canvas>
+                        </div>
+                        <p class="mt-4 text-sm text-gray-600">Dengan luas total ~5.2 juta km², wilayah Indonesia didominasi oleh perairan, menjadikannya negara maritim yang strategis.</p>
+                    </div>
+                    
+                    <div class="card p-6 lg:col-span-2 order-first md:order-last lg:order-none">
+                         <h3 class="text-xl font-semibold mb-6 text-center text-[#795548]">Data Kunci Geografis</h3>
+                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 text-center">
+                            <div class="flex flex-col items-center justify-center p-3 bg-green-50 rounded-lg">
+                                <span class="text-4xl font-bold text-[#558B2F]">13.466</span>
+                                <span class="text-sm text-gray-600 mt-1">Pulau</span>
+                            </div>
+                             <div class="flex flex-col items-center justify-center p-3 bg-green-50 rounded-lg">
+                                <span class="text-4xl font-bold text-[#558B2F]">1.9jt</span>
+                                <span class="text-sm text-gray-600 mt-1">km² Daratan</span>
+                            </div>
+                             <div class="flex flex-col items-center justify-center p-3 bg-green-50 rounded-lg">
+                                <span class="text-4xl font-bold text-[#558B2F]">2</span>
+                                <span class="text-sm text-gray-600 mt-1">Musim</span>
+                            </div>
+                             <div class="flex flex-col items-center justify-center p-3 bg-green-50 rounded-lg">
+                                <span class="text-3xl font-bold text-[#558B2F]">>90%</span>
+                                <span class="text-sm text-gray-600 mt-1">Kelembaban</span>
+                            </div>
+                             <div class="flex flex-col items-center justify-center p-3 bg-green-50 rounded-lg">
+                                <span class="text-3xl font-bold text-[#558B2F]">23-30°C</span>
+                                <span class="text-sm text-gray-600 mt-1">Suhu Rata-rata</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center p-3 bg-green-50 rounded-lg">
+                                <span class="text-3xl font-bold text-[#558B2F]"> khatulistiwa</span>
+                                <span class="text-sm text-gray-600 mt-1">Garis</span>
+                            </div>
+                         </div>
+                         <p class="mt-6 text-sm text-center text-gray-600">Kombinasi ini menciptakan tanah subur dan keanekaragaman hayati yang luar biasa, namun juga rentan terhadap dampak perubahan iklim.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="urban-solutions">
+                <h2 class="text-3xl font-bold text-center mb-2 text-[#558B2F]">Solusi Hijau Perkotaan</h2>
+                <p class="text-center max-w-2xl mx-auto mb-8 text-gray-600">Di tengah laju urbanisasi, penghijauan dan pertanian perkotaan muncul sebagai jawaban untuk menciptakan kota yang lebih sehat, lestari, dan berketahanan pangan.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-center text-[#795548]">Manfaat Multi-dimensi Penghijauan</h3>
+                        <p class="text-sm text-center mb-4 text-gray-600">Penanaman pohon di kota memberikan dampak positif yang luas, mulai dari kualitas udara hingga kesejahteraan psikologis warga.</p>
+                        <div class="chart-container">
+                            <canvas id="greeningBenefitsChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-center text-[#795548]">Kebangkitan Urban Farming</h3>
+                        <p class="text-sm text-center mb-4 text-gray-600">Pertanian perkotaan tumbuh pesat, mengubah lahan sempit menjadi sumber pangan produktif dan memperkuat komunitas.</p>
+                         <div class="chart-container">
+                            <canvas id="urbanFarmingGrowthChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card p-6 lg:col-span-2">
+                         <h3 class="text-xl font-semibold mb-4 text-center text-[#795548]">Analisis Dampak Holistik Urban Farming</h3>
+                         <p class="text-sm text-center mb-4 text-gray-600">Lebih dari sekadar pangan, urban farming memberikan kontribusi signifikan terhadap aspek ekonomi, sosial, dan lingkungan di perkotaan.</p>
+                         <div class="chart-container" style="max-width: 450px;">
+                            <canvas id="urbanFarmingImpactsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card p-6 lg:col-span-2">
+                        <h3 class="text-xl font-semibold mb-4 text-center text-[#795548]">✨ Saran Urban Farming Personal</h3>
+                        <p class="text-sm text-center mb-4 text-gray-600">Dapatkan rekomendasi tanaman dan tips urban farming yang disesuaikan dengan kondisi Anda!</p>
+                        <div class="flex flex-col items-center">
+                            <textarea id="urbanFarmingPrompt" class="w-full md:w-3/4 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BC34A] mb-4 text-sm" rows="4" placeholder="Contoh: Saya punya lahan sempit di atap, ingin menanam buah-buahan yang tahan panas."></textarea>
+                            <button id="generateTipsBtn" class="bg-[#558B2F] hover:bg-[#8BC34A] text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                                Dapatkan Saran ✨
+                            </button>
+                            <div id="urbanFarmingLoading" class="loading-spinner mt-4"></div>
+                            <div id="urbanFarmingOutput" class="mt-4 p-4 bg-green-50 rounded-lg border border-green-200 w-full md:w-3/4 text-sm text-gray-800 hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="future-innovations">
+                <h2 class="text-3xl font-bold text-center mb-2 text-[#558B2F]">Sains & Teknologi untuk Masa Depan</h2>
+                <p class="text-center max-w-2xl mx-auto mb-8 text-gray-600">Bioteknologi dan inovasi pertanian modern adalah kunci untuk membuka potensi penuh sektor agrikultur Indonesia secara berkelanjutan.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-center text-[#795548]">Penerapan Bioteknologi di Indonesia</h3>
+                         <p class="text-sm text-center mb-4 text-gray-600">Bioteknologi diterapkan di berbagai sektor krusial untuk meningkatkan kualitas dan efisiensi, dari pangan hingga pengelolaan limbah.</p>
+                        <div class="chart-container">
+                            <canvas id="biotechApplicationsChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-center text-[#795548]">Tantangan Pengembangan Bioteknologi</h3>
+                        <p class="text-sm text-center mb-4 text-gray-600">Meskipun potensinya besar, beberapa hambatan sistemik memperlambat kemajuan bioteknologi di tingkat nasional.</p>
+                        <div class="chart-container">
+                            <canvas id="biotechChallengesChart"></canvas>
+                        </div>
+                    </div>
+                     <div class="card p-6 lg:col-span-2">
+                        <h3 class="text-xl font-semibold mb-4 text-center text-[#795548]">Alur Inovasi Pertanian Modern</h3>
+                        <p class="text-sm text-center mb-4 text-gray-600">Inovasi pertanian adalah sebuah ekosistem, mulai dari pengembangan teknologi hingga adopsi oleh petani untuk meningkatkan kesejahteraan dan ketahanan pangan.</p>
+                        <div class="flex flex-col md:flex-row justify-center items-center text-center space-y-4 md:space-y-0 md:space-x-4 flex-wrap">
+                            <div class="flow-item p-4 bg-green-50 rounded-lg">
+                                <div class="text-2xl mb-2">💡</div>
+                                <h4 class="font-semibold text-[#558B2F]">Ide & Riset</h4>
+                                <p class="text-xs text-gray-600">Pengembangan bibit unggul, biopestisida, irigasi efisien.</p>
+                            </div>
+                            <div class="hidden md:block flow-arrow"></div>
+                            <div class="flow-item p-4 bg-yellow-50 rounded-lg">
+                                <div class="text-2xl mb-2">📢</div>
+                                <h4 class="font-semibold text-[#FFC107]">Diseminasi</h4>
+                                <p class="text-xs text-gray-600">Peran penyuluh, demplot, sekolah lapang untuk transfer ilmu.</p>
+                            </div>
+                            <div class="hidden md:block flow-arrow"></div>
+                             <div class="flow-item p-4 bg-green-50 rounded-lg">
+                                <div class="text-2xl mb-2">🧑‍🌾</div>
+                                <h4 class="font-semibold text-[#558B2F]">Adopsi Petani</h4>
+                                <p class="text-xs text-gray-600">Penerapan teknologi baru di lahan pertanian.</p>
+                            </div>
+                             <div class="hidden md:block flow-arrow"></div>
+                            <div class="flow-item p-4 bg-yellow-50 rounded-lg">
+                                <div class="text-2xl mb-2">📈</div>
+                                <h4 class="font-semibold text-[#FFC107]">Hasil</h4>
+                                <p class="text-xs text-gray-600">Peningkatan produktivitas, pendapatan, & ketahanan pangan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card p-6 lg:col-span-2">
+                        <h3 class="text-xl font-semibold mb-4 text-center text-[#795548]">✨ Jelaskan Istilah Bioteknologi</h3>
+                        <p class="text-sm text-center mb-4 text-gray-600">Dapatkan penjelasan singkat dan mudah dipahami tentang istilah bioteknologi apa pun.</p>
+                        <div class="flex flex-col items-center">
+                            <input type="text" id="biotechTermInput" class="w-full md:w-3/4 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFC107] mb-4 text-sm" placeholder="Contoh: Rekayasa Genetika">
+                            <button id="explainTermBtn" class="bg-[#795548] hover:bg-[#FFC107] text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                                Jelaskan ✨
+                            </button>
+                            <div id="biotechLoading" class="loading-spinner mt-4"></div>
+                            <div id="biotechOutput" class="mt-4 p-4 bg-orange-50 rounded-lg border border-orange-200 w-full md:w-3/4 text-sm text-gray-800 hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center mt-16 pt-8 border-t border-[#8BC34A]">
+            <p class="text-gray-600">Infografis ini dibuat untuk menyoroti sinergi antara kekayaan alam, inovasi perkotaan, dan kemajuan teknologi dalam membangun Indonesia yang lestari dan sejahtera.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const chartColors = ['#558B2F', '#8BC34A', '#FFC107', '#795548', '#CDDC39'];
+
+        function wrapLabels(label, maxWidth) {
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 < maxWidth) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            family: 'Inter',
+                        },
+                        padding: 20
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    backgroundColor: '#333333',
+                    titleFont: {
+                        size: 14,
+                        family: 'Inter'
+                    },
+                    bodyFont: {
+                        size: 12,
+                        family: 'Inter'
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        font: { family: 'Inter' }
+                    },
+                    grid: {
+                        color: '#e0e0e0'
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: { family: 'Inter' }
+                    },
+                     grid: {
+                        display: false
+                    }
+                }
+            }
+        };
+
+        new Chart(document.getElementById('landWaterChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Daratan (37%)', 'Perairan (63%)'],
+                datasets: [{
+                    label: 'Komposisi Wilayah Indonesia',
+                    data: [37, 63],
+                    backgroundColor: [chartColors[0], chartColors[2]],
+                    borderColor: '#ffffff',
+                    borderWidth: 2,
+                }]
+            },
+            options: { ...defaultChartOptions, scales: { y: { display: false }, x: { display: false } } }
+        });
+
+        new Chart(document.getElementById('greeningBenefitsChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Kualitas Udara', 'Reduksi Banjir', 'Kontrol Iklim', 'Estetika & Mood', 'Habitat Satwa'],
+                datasets: [{
+                    label: 'Tingkat Dampak Positif (Skala 100)',
+                    data: [95, 85, 80, 92, 75],
+                    backgroundColor: chartColors[1],
+                    borderColor: chartColors[0],
+                    borderWidth: 1,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                indexAxis: 'y',
+                plugins: { ...defaultChartOptions.plugins, legend: { display: false } },
+                 scales: {
+                    x: { max: 100, ticks: { font: { family: 'Inter' } } },
+                    y: { ticks: { font: { family: 'Inter' } } }
+                }
+            }
+        });
+        
+        new Chart(document.getElementById('urbanFarmingGrowthChart'), {
+            type: 'line',
+            data: {
+                labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Indeks Pertumbuhan Urban Farming',
+                    data: [100, 150, 240, 350, 450, 510],
+                    fill: true,
+                    backgroundColor: 'rgba(139, 195, 74, 0.2)',
+                    borderColor: chartColors[1],
+                    tension: 0.3
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                plugins: { ...defaultChartOptions.plugins, legend: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('urbanFarmingImpactsChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Ketahanan Pangan', 'Ekonomi', 'Lingkungan', 'Sosial', 'Edukasi & Inovasi'],
+                datasets: [{
+                    label: 'Dampak Urban Farming',
+                    data: [85, 70, 78, 88, 65],
+                    backgroundColor: 'rgba(255, 193, 7, 0.3)',
+                    borderColor: chartColors[2],
+                    pointBackgroundColor: chartColors[2],
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: chartColors[2]
+                }]
+            },
+            options: {
+                 ...defaultChartOptions,
+                 scales: {
+                     r: {
+                         angleLines: { color: '#e0e0e0' },
+                         grid: { color: '#e0e0e0' },
+                         pointLabels: { font: { size: 12, family: 'Inter' } },
+                         ticks: { backdropColor: 'rgba(255, 255, 255, 0.7)' }
+                     }
+                 },
+                 plugins: { ...defaultChartOptions.plugins, legend: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('biotechApplicationsChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Sektor Aplikasi'],
+                datasets: [
+                    { label: 'Pertanian', data: [50], backgroundColor: chartColors[0] },
+                    { label: 'Kesehatan', data: [30], backgroundColor: chartColors[1] },
+                    { label: 'Lingkungan & Industri', data: [20], backgroundColor: chartColors[2] },
+                ]
+            },
+            options: {
+                ...defaultChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: { stacked: true, max: 100, ticks: { callback: value => value + "%" } },
+                    y: { stacked: true, display: false }
+                }
+            }
+        });
+        
+        new Chart(document.getElementById('biotechChallengesChart'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabels('Minimnya Dana Riset', 20), 
+                    wrapLabels('Kebijakan & Regulasi', 20), 
+                    wrapLabels('Kuantitas & Kualitas SDM Ahli', 20), 
+                    wrapLabels('Fasilitas Riset Terbatas', 20)
+                ],
+                datasets: [{
+                    label: 'Tingkat Hambatan (Skala 100)',
+                    data: [90, 80, 75, 65],
+                    backgroundColor: chartColors[3],
+                    borderColor: '#5D4037',
+                    borderWidth: 1,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                plugins: { ...defaultChartOptions.plugins, legend: { display: false } },
+                scales: {
+                    x: { max: 100, ticks: { font: { family: 'Inter' } } },
+                    y: { ticks: { font: { family: 'Inter' } } }
+                }
+            }
+        });
+
+        // Gemini API Integration
+        const apiKey = ""; 
+
+        async function callGeminiAPI(prompt, outputElement, loadingElement) {
+            outputElement.classList.add('hidden');
+            loadingElement.style.display = 'block';
+            outputElement.innerHTML = '';
+
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    outputElement.innerHTML = text;
+                    outputElement.classList.remove('hidden');
+                } else {
+                    outputElement.innerHTML = 'Maaf, tidak dapat menghasilkan respons. Coba lagi.';
+                    outputElement.classList.remove('hidden');
+                }
+            } catch (error) {
+                outputElement.innerHTML = `Terjadi kesalahan: ${error.message}. Silakan coba lagi.`;
+                outputElement.classList.remove('hidden');
+            } finally {
+                loadingElement.style.display = 'none';
+            }
+        }
+
+        document.getElementById('generateTipsBtn').addEventListener('click', () => {
+            const promptInput = document.getElementById('urbanFarmingPrompt').value;
+            const outputDiv = document.getElementById('urbanFarmingOutput');
+            const loadingDiv = document.getElementById('urbanFarmingLoading');
+            if (promptInput.trim() === '') {
+                outputDiv.innerHTML = 'Mohon masukkan deskripsi lahan Anda.';
+                outputDiv.classList.remove('hidden');
+                return;
+            }
+            const prompt = `Berikan 3-5 saran urban farming atau rekomendasi tanaman berdasarkan kondisi berikut: "${promptInput}". Sertakan juga tips singkat untuk perawatan. Format sebagai daftar poin.`;
+            callGeminiAPI(prompt, outputDiv, loadingDiv);
+        });
+
+        document.getElementById('explainTermBtn').addEventListener('click', () => {
+            const termInput = document.getElementById('biotechTermInput').value;
+            const outputDiv = document.getElementById('biotechOutput');
+            const loadingDiv = document.getElementById('biotechLoading');
+            if (termInput.trim() === '') {
+                outputDiv.innerHTML = 'Mohon masukkan istilah bioteknologi yang ingin dijelaskan.';
+                outputDiv.classList.remove('hidden');
+                return;
+            }
+            const prompt = `Jelaskan istilah bioteknologi "${termInput}" dalam bahasa Indonesia yang sederhana dan mudah dipahami, tidak lebih dari 50 kata.`;
+            callGeminiAPI(prompt, outputDiv, loadingDiv);
+        });
+    </script>
+</body>
+</html>
